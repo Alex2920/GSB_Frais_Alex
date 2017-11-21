@@ -26,12 +26,13 @@ class C_default extends CI_Controller {
 		}
 		else
 		{
-			$libelletype = $this->session->userdata('libelletype');
-			if($libelletype=='comptable'){
+			
+			$libelleType = $this->session->userdata('libelleType');
+			if($libelleType=='comptable'){
 			$this->load->helper('url');
 			redirect('/c_comptable/');}
 			
-			else if($libelletype=='visiteur') {
+			else if($libelleType=='visiteur') {
 				$this->load->helper('url');
 				redirect('/c_visiteur/');}
 			}
@@ -52,7 +53,7 @@ class C_default extends CI_Controller {
 		$mdp = $this->input->post('mdp');
 		
 		$authUser = $this->authentif->authentifier($login, $mdp);
-
+		var_dump($authUser);
 		if(empty($authUser))
 		{
 			$data = array('erreur'=>'Login ou mot de passe incorrect');
@@ -61,8 +62,9 @@ class C_default extends CI_Controller {
 		else
 		{
 			
-			$this->authentif->connecter($authUser['id'], $authUser['nom'], $authUser['prenom']);
-			$this->index();
+			$this->authentif->connecter($authUser['id'], $authUser['nom'], $authUser['prenom'], $authUser['libelleType']);
+			//$this->index();
+			
 		}
 	}
 	

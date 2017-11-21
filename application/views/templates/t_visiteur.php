@@ -24,7 +24,7 @@
 		<div id="page">
 			<div id="entete">
 				<img src="<?php echo $v_path.'/templates/images/logo.jpg'?>" id="logoGSB" alt="Laboratoire Galaxy-Swiss Bourdin" title="Laboratoire Galaxy-Swiss Bourdin" />
-				<h1>Gestion des frais de déplacements</h1>
+				<h1>Gestion des frais de déplacements-v1</h1>
 			</div>
 			
 			<!-- Division pour le menu -->
@@ -35,7 +35,7 @@
 				
 				<ul id="menuList">
 					<li>
-						Visiteur :<br/>
+						Visiteur : <?php echo $this->session->userdata('libelleType'); ?><br/>
 						<?php echo $this->session->userdata('prenom')."  ".$this->session->userdata('nom');  ?>
 					</li>
 					<br/>
