@@ -17,6 +17,7 @@ class C_comptable extends CI_Controller {
 	public function _remap($action, $params = array())
 	{
 		// chargement du modèle d'authentification
+		echo "Accueil Comptable";
 		$this->load->model('authentif');
 		
 		// contrôle de la bonne authentification de l'utilisateur
@@ -31,7 +32,7 @@ class C_comptable extends CI_Controller {
 			// Aiguillage selon l'action demandée 
 			// CI a traité l'URL au préalable de sorte à toujours renvoyer l'action "index"
 			// même lorsqu'aucune action n'est exprimée
-			/*if ($action == 'index')				// index demandé : on active la fonction accueil du modèle visiteur
+			if ($action == 'index')				// index demandé : on active la fonction accueil du modèle visiteur
 			{
 				$this->load->model('a_comptable');
 
@@ -161,7 +162,7 @@ class C_comptable extends CI_Controller {
 			 else								// dans tous les autres cas, on envoie la vue par défaut pour l'erreur 404
 			{
 				show_404();
-			}*/
+			}
 		}
 		
 	}
