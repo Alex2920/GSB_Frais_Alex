@@ -19,7 +19,7 @@ class DataAccess extends CI_Model {
 	 * @param $mdp
 	 * @return l'id, le nom et le prénom sous la forme d'un tableau associatif 
 	*/
-    public function getInfosUtilisateur($login, $mdp){
+	public function getInfosVisiteur($login, $mdp){
 		$req = "select users.id as id, users.nom as nom, users.prenom as prenom, users.libelleType as libelleType
 				from users
 				where users.login=? and users.mdp=?";
@@ -193,6 +193,51 @@ class DataAccess extends CI_Model {
 		$laFiche = $this->getLesInfosFicheFrais($idVisiteur,$mois);
 		if($laFiche['idEtat']=='CR'){
 				$this->majEtatFicheFrais($idVisiteur, $mois,'CL');
+		}
+	}
+
+	/**
+	* Signe une fiche de frais en modifiant son état de "CL" à "VA"
+	* Ne fait rien si l'état initial n'est pas a "CL"
+	* @param $idVisiteur 
+	* @param $mois sous la forme aaaamm
+	*/
+
+	public function validationFiche($idVisiteur,$mois){
+		//met à 'CL' son champs idEtat
+		$laFiche = $this->getLesInfosFicheFrais($idVisiteur,$mois);
+		 if ($laFiche['idEtat']=='CL') {
+				$this->majEtatFicheFrais($idVisiteur, $mois, 'VA');
+		}
+	}
+
+	/**
+	* Mise en paiement de la fiche de frais en modifiant son état de "VA" à "MP"
+	* Ne fait rien si l'état initial n'est pas a "VA"
+	* @param $idVisiteur 
+	* @param $mois sous la forme aaaamm
+	*/
+
+	public function misepaiementFiche($idVisiteur,$mois){
+		//met à 'CL' son champs idEtat
+		$laFiche = $this->getLesInfosFicheFrais($idVisiteur,$mois);
+		 if ($laFiche['idEtat']=='VA') {
+				$this->majEtatFicheFrais($idVisiteur, $mois, 'MP');
+		}
+	}
+
+	/**
+	* Remboursement de la fiche de frais en modifiant son état de "VA" à "MP"
+	* Ne fait rien si l'état initial n'est pas a "VA"
+	* @param $idVisiteur 
+	* @param $mois sous la forme aaaamm
+	*/
+
+	public function rembourseFiche($idVisiteur,$mois){
+		//met à 'CL' son champs idEtat
+		$laFiche = $this->getLesInfosFicheFrais($idVisiteur,$mois);
+		 if ($laFiche['idEtat']=='MP') {
+				$this->majEtatFicheFrais($idVisiteur, $mois, 'RB');
 		}
 	}
 
