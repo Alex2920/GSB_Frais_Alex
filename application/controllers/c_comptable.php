@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * Contrôleur du module VISITEUR de l'application
+ * Contrôleur du module COMPTABLE de l'application
 */
-class C_visiteur extends CI_Controller {
+class C_comptable extends CI_Controller {
 
 	/**
 	 * Aiguillage des demandes faites au contrôleur
@@ -31,7 +31,7 @@ class C_visiteur extends CI_Controller {
 			// Aiguillage selon l'action demandée 
 			// CI a traité l'URL au préalable de sorte à toujours renvoyer l'action "index"
 			// même lorsqu'aucune action n'est exprimée
-			if ($action == 'index')				// index demandé : on active la fonction accueil du modèle visiteur
+			/*if ($action == 'index')				// index demandé : on active la fonction accueil du modèle visiteur
 			{
 				$this->load->model('a_comptable');
 
@@ -85,7 +85,7 @@ class C_visiteur extends CI_Controller {
 				// obtention de l'id utilisateur courant
 				$idVisiteur = $this->session->userdata('idUser');
 
-				$this->a_visiteur->modFiche($idVisiteur, $mois);
+				$this->a_comptable->modFiche($idVisiteur, $mois);
 			}
 			elseif ($action == 'signeFiche') 	// signeFiche demandé : on active la fonction signeFiche du modèle visiteur ...
 			{	// TODO : contrôler la validité du second paramètre (mois de la fiche à modifier)
@@ -158,10 +158,11 @@ class C_visiteur extends CI_Controller {
 				// ... et on revient en modification de la fiche
 				$this->a_comptable->modFiche($idVisiteur, $mois, 'Ligne "Hors forfait" supprimée ...');				
 			}
-			else								// dans tous les autres cas, on envoie la vue par défaut pour l'erreur 404
+			 else								// dans tous les autres cas, on envoie la vue par défaut pour l'erreur 404
 			{
 				show_404();
-			}
+			}*/
 		}
+		
 	}
 }

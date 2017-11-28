@@ -29,8 +29,8 @@ class C_default extends CI_Controller {
 			
 			$libelleType = $this->session->userdata('libelleType');
 			if($libelleType=='comptable'){
-			$this->load->helper('url');
-			redirect('/c_comptable/');}
+				$this->load->helper('url');
+				redirect('/c_comptable/');}
 			
 			else if($libelleType=='visiteur') {
 				$this->load->helper('url');
@@ -63,7 +63,7 @@ class C_default extends CI_Controller {
 		{
 			
 			$this->authentif->connecter($authUser['id'], $authUser['nom'], $authUser['prenom'], $authUser['libelleType']);
-			//$this->index();
+			$this->index();
 			
 		}
 	}
